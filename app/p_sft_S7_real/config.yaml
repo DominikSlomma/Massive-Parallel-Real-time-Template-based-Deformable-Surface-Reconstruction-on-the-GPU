@@ -1,0 +1,59 @@
+
+System:
+  video_file_path: "../data/phi_SfT/real/S7/rgbs/rgb_"
+  reference_file_path: "../data/phi_SfT/real/S7/templates/template_mesh_final_textured.obj"
+
+  optimization_algorithm: 0
+  # 0: normal
+  # 1: Distance Only
+  # 2: Normal with only the vertices as reporjection
+  verbose: false
+
+Optimizer:
+  max_iteration: 10
+
+Image:
+  width: 1920
+  height: 1080
+  fx: 971.522
+  fy: 944.575
+  cx: 962.134
+  cy: 554.778
+
+  k1: 0.0
+  k2: 0.0
+  p1: 0.0
+  p2: 0.0
+  k3: 0.0
+  scale: 1
+
+Preprocessing:
+  create_mask: false
+  brightness_threshold: 0
+  width_min: 500
+  width_max: 800
+  height_min: 500
+  height_max: 800
+# first 40, then 70, then 60
+
+Visualization:
+ width: 1600
+ height: 900
+ w_uv: 1920
+ h_uv: 1080
+ show_only_optimised_part: true
+ ShouldRotate: true
+
+
+Phi_SfT:
+  gt_path: "../data/phi_SfT/real/S7/point_clouds/point_cloud_"
+  # simplification: 586
+  max_number_frames: 39
+  only_once: false
+
+
+Kanade:
+  iteration: 10
+  width: 100
+  height: 80
+

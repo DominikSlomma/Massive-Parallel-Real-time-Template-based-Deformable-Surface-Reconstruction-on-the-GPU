@@ -1,0 +1,65 @@
+
+System:
+  video_file_path: "../data/HamlynDatasetShort/f5phantom/f5_dynamic_deint_L.avi"
+  reference_file_path: "../data/HamlynDatasetShort/f5phantom/f5/heartDepthMap_"
+
+  optimization_algorithm: 0
+  # 0: normal
+  # 1: Distance Only
+  # 2: Normal with only the vertices as reporjection
+  verbose: false
+
+Optimizer:
+  max_iteration: 10
+
+Image:
+  width: 360
+  height: 288
+  fx: 391.656525
+  fy: 426.835144
+  cx: 165.964371
+  cy: 154.498138
+
+  k1: 0.0
+  k2: 0.0
+  p1: 0.0
+  p2: 0.0
+  k3: 0.0
+  scale: 1.0
+
+Preprocessing:
+  create_mask: false
+  brightness_threshold: 70
+  width_min: 2
+  width_max: 360
+  height_min: 5
+  height_max: 288
+# first 40, then 70, then 60
+
+Visualization:
+ width: 1600
+ height: 900
+ show_only_optimised_part: false
+ ShouldRotate: true
+ w_uv: 360
+ h_uv: 288
+
+
+GT_Mesh:
+  OrientNormalsConsistentTangentPlane: 20
+  Poisson_depth: 9
+  Poisson_width: 0.1
+  simplification: 10000
+
+Hamlyn:
+  FPS: 25
+  multiplier: 30
+  addition: 0.466667
+  modulo: 20
+  gt_path: "../data/HamlynDatasetShort/f5phantom/f5/heartDepthMap_"
+
+
+Kanade:
+  iteration: 10
+  width: 92
+  height: 70
