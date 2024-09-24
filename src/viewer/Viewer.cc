@@ -32,8 +32,6 @@ void MeshViewer::request_terminate() {
 }
 
 void MeshViewer::draw_current_cam_pose() {
-    // frustum size of the frame
-    // const float w = *menu_frm_size_;
 
     glLineWidth(2);
     GLfloat color[] = {0.75f, 0.75f, 1.0f};
@@ -63,6 +61,10 @@ void MeshViewer::draw_frustum() const {
 
 void MeshViewer::draw_current_mesh() {
     
+
+    // different approach!
+    // for now I assume that I need a pair of different triangles and different veritces
+
     db_->getTexture(img_);
     // db_->getVertices(vertices_);
     // db_->getTriangles(triangles_);
@@ -72,7 +74,6 @@ void MeshViewer::draw_current_mesh() {
     mDrawer->addTriangles(triangles_);
     mDrawer->addTextureImage(img_);
 
-    // std::cout << triangles_.size() << std::endl;
     mDrawer->drawMesh(0.99);
 }
 
@@ -141,18 +142,7 @@ rotation_180_z.m[5] = -1; // Invert Y-axis
             else
                 db_->setUnpause();
         }
-        // // Setzen Sie die Größe des Punktes
-        // glPointSize(10.0f);
 
-        // // // Zeichnen Sie den Punkt vor der Kamera
-        // glBegin(GL_POINTS);
-        // glVertex3f(0.0f, 0.0f, 1.0f); // Der Punkt wird vor der Kamera positioniert (z.B. 1 Einheit vor der Kamera)
-        // glEnd();
-        // // pangolin::glDrawColouredCube();
-        
-        // if (*menu_pause_ == true) {
-        //     db_->setPause();
-        // }
         
         pangolin::FinishFrame();
 
@@ -161,7 +151,6 @@ rotation_180_z.m[5] = -1; // Invert Y-axis
         }
     }
 
-    // pangolin::QuitAll();
 }
 
 };// Namespace

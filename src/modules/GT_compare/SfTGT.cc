@@ -13,7 +13,6 @@ SfTGT::SfTGT(const YAML::Node &config) : config_(config) {
     path_ = config["Phi_SfT"]["gt_path"].as<std::string>();
 }
 
-// open3d::io::ReadPointCloud("/home/anonym/Schreibtisch/PhD/code/Sparse Template based Reconstruction/data/phi_SfT/real/S1/point_clouds/point_cloud_000.ply", *test);
 
 void SfTGT::compareWithGroundTruth(std::vector<Eigen::Vector3d> vertices, std::vector<Eigen::Vector3i> triangles, std::vector<Eigen::Vector3d> &gt_pc) {
     open3d::geometry::TriangleMesh tmp;
@@ -26,8 +25,6 @@ void SfTGT::compareWithGroundTruth(std::vector<Eigen::Vector3d> vertices, std::v
     std::string result = ss.str();
 
     auto pc = std::make_shared<open3d::geometry::PointCloud>(); 
-    // auto pc = open3d::io::CreatePointCloudFromFile(path_ + std::to_string(gt_id) + ".txt", "xyz");
-    // open3d::io::ReadPointCloud("/home/anonym/Schreibtisch/PhD/code/Sparse Template based Reconstruction/data/phi_SfT/real/S1/point_clouds/point_cloud_" + result + ".ply", *pc);
     open3d::io::ReadPointCloud(path_ + result + ".ply", *pc);
     std::vector<Eigen::Vector3d> tmp1;
     gt_pc.clear();
@@ -44,7 +41,6 @@ void SfTGT::compareWithGroundTruth(std::vector<Eigen::Vector3d> vertices, std::v
     pc->points_ = tmp1;
     open3d::t::geometry::TriangleMesh t_mesh = open3d::t::geometry::TriangleMesh::FromLegacy(*mesh);
     open3d::t::geometry::PointCloud t_pc = open3d::t::geometry::PointCloud::FromLegacy(*pc);
-    // t_mesh.Clear();
 
     auto scene = open3d::t::geometry::RaycastingScene() ;
     scene.AddTriangles(t_mesh);

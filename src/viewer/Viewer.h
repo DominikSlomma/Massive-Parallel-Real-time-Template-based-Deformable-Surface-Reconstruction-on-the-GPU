@@ -9,19 +9,9 @@
 #include <opencv2/opencv.hpp>
 #include <Eigen/Core>
 #include <Eigen/Geometry>
-// #include <pangolin/display/display.h>
-// #include <pangolin/display/view.h>
-// #include <pangolin/handler/handler.h>
-// #include <pangolin/gl/gldraw.h>
+
 
 #include <pangolin/var/var.h>
-// #include <pangolin/var/varextra.h>
-// #include <pangolin/gl/gl.h>
-// #include <pangolin/gl/gldraw.h>
-// #include <pangolin/display/display.h>
-// #include <pangolin/display/view.h>
-// #include <pangolin/display/widgets.h>
-// #include <pangolin/display/default_font.h>
 #include <pangolin/handler/handler.h>
 #include <yaml-cpp/yaml.h>
 namespace stbr {
@@ -71,11 +61,6 @@ class MeshViewer {
         std::unique_ptr<pangolin::OpenGlRenderState> s_cam_;
 };
 
-// inline void draw_line(const float x1, const float y1, const float z1,
-//                               const float x2, const float y2, const float z2) const {
-//     glVertex3f(x1, y1, z1);
-//     glVertex3f(x2, y2, z2);
-// }
 
 }
 

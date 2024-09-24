@@ -7,7 +7,6 @@ namespace Viewer {
         cx_(config["Image"]["cx"].as<double>()), cy_(config["Image"]["cy"].as<double>()),
         width_(config["Image"]["width"].as<int>()), height_(config["Image"]["height"].as<int>()), texture_(img) {
         
-        // uvs_.resize(vertices_.size(), Eigen::Vector2d(0,0));
         for (int i=0; i < vertices_.size(); i++) {
             uvs_.push_back(Eigen::Vector2d(0,0));
         }
@@ -24,8 +23,6 @@ namespace Viewer {
             Eigen::Vector2d uv;
             uv << u, v;
             uvs.push_back(uv);
-            // uvs_[i].x() = u;
-            // uvs_[i].y() = v;
         }
         uvs_ = uvs;
     }
@@ -76,7 +73,11 @@ namespace Viewer {
         for(int i=0; i < triangles_.size(); i++) {
             int t1 = triangles_[i].x();
             int t2 = triangles_[i].y();
-            int t3 = triangles_[i].z();
+            int t3 = triangles_[i].z();// inline void draw_line(const float x1, const float y1, const float z1,
+//                               const float x2, const float y2, const float z2) const {
+//     glVertex3f(x1, y1, z1);
+//     glVertex3f(x2, y2, z2);
+// }
             
             float v1_x = vertices_[t1].x();
             float v1_y = vertices_[t1].y();

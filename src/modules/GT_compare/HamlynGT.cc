@@ -14,19 +14,7 @@ HamlynGT::HamlynGT(const YAML::Node &config) : config_(config) {
 }
 
 void HamlynGT::compareWithGroundTruth(std::vector<Eigen::Vector3d> vertices, std::vector<Eigen::Vector3i> triangles, std::vector<Eigen::Vector3d> &gt_pc) {
-    // Erstellen eines TriangleMesh-Objekts
-    // static int cc = 0;
-    // std::string filename = "/home/anonym/Schreibtisch/PhD/code/Sparse Template based Reconstruction/data/f7_defslam_gt/" + std::to_string(cc) + ".obj";
-    // cc++;
-    // std::shared_ptr<open3d::geometry::TriangleMesh> mesh123;
-    //     // mesh = createRefMesh(config, gt_id);
-    //     mesh123 = open3d::io::CreateMeshFromFile(filename);
-    //     // int num = mesh123->vertices_.size();
-    //     mesh123->RemoveUnreferencedVertices();
-        // std::cout << num << " " << mesh123->vertices_.size() << std::endl;
-        // if(num != mesh123->vertices_.size())
-        //     std::cout << "asdas\n";
-    // exit(1);
+
     
 
     open3d::geometry::TriangleMesh tmp;
@@ -50,7 +38,6 @@ void HamlynGT::compareWithGroundTruth(std::vector<Eigen::Vector3d> vertices, std
     pc->points_ = tmp1;
     open3d::t::geometry::TriangleMesh t_mesh = open3d::t::geometry::TriangleMesh::FromLegacy(*mesh);
     open3d::t::geometry::PointCloud t_pc = open3d::t::geometry::PointCloud::FromLegacy(*pc);
-    // t_mesh.Clear();
 
     auto scene = open3d::t::geometry::RaycastingScene() ;
     scene.AddTriangles(t_mesh);
@@ -66,31 +53,5 @@ void HamlynGT::compareWithGroundTruth(std::vector<Eigen::Vector3d> vertices, std
     all_mean_.push_back(mean);
     std::cout << mean << " " << values.size() << std::endl;
     FrameNo_++;
-    
-    // cv::Mat mat(288, 360, CV_32F, values.data());
-    // cv::Mat scaled_mat;
-    // cv::normalize(mat, scaled_mat, 0, 255, cv::NORM_MINMAX, CV_8UC1);
-    // cv::Mat heatmap;
-    // cv::applyColorMap(scaled_mat, heatmap, cv::COLORMAP_JET);
-
-    // cv::Mat in[] = {cv::Mat::zeros(scaled_mat.rows, scaled_mat.cols, CV_8UC1), cv::Mat::zeros(scaled_mat.rows, scaled_mat.cols, CV_8UC1), scaled_mat};
-    // cv::Mat in[] = {scaled_mat, scaled_mat, scaled_mat};
-    // int from_to[] = {0,0, 1,1, 2,2};
-    // cv::mixChannels(in, 3, &heatmap, 1, from_to, 3);
-    
-    // double mean=0;
-    // std::vector<Eigen::Vector3d> pce = pc->points_;
-    // int counter = 0;
-    // for(int i=0;i<values.size();i++) {
-    //     float val = values[i];
-    //     if((pce[i].x() == 0) && (pce[i].y() == 0) && (pce[i].z() == 0))
-    //         continue;
-    //     counter++;
-    //     mean += val;
-    //     // std::cout << val << std::endl;
-    // }
-    // std::cout << mean/counter << " " << counter << std::endl;
-    // cv::imshow("Heatmap", heatmap);
-    // output = heatmap;
 }
 }

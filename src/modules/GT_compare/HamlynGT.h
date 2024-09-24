@@ -5,8 +5,7 @@
 #include "GT_compare/GroundTruth_compare.h"
 #include <yaml-cpp/yaml.h>
 #include <string>
-// #include <iostream>
-// #include <open3d/Open3D.h>
+
 namespace stbr {
 class GroundTruth;
 

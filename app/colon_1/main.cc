@@ -1,16 +1,10 @@
-// #include "MeshMap.h"
-// #include "Tracking.h"
-// #include "viewer/Mesh_Visualizer.h"
+
 #include "System.h"
 #include "GT_compare/ColonGT.h"
 
 #include "utils.h"
 
 #include <opencv2/opencv.hpp>
-// #include <Eigen/Core>
-// #include <Eigen/Geometry>
-// #include <open3d/Open3D.h>
-// #include <open3d/t/geometry/RaycastingScene.h>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -41,7 +35,6 @@ int main() {
     std::vector<Eigen::Vector3d> vertices;
     std::vector<Eigen::Vector3i> triangles;
     utils::getMeshColon(config, reference_path, vertices, triangles);
-    // utils::createRefMeshDepthImages(config, "00001",vertices, triangles);
 
     cv::Mat frame;
 
@@ -50,11 +43,8 @@ int main() {
     ss << std::setw(5) << std::setfill('0') << start_id;
     std::string s_start_id = ss.str();
     frame = cv::imread(img_file_path + s_start_id + ".png");
-    // cv::rotate(frame, frame, cv::ROTATE_180);
     System *sys = new System(triangles, vertices, frame, config, gt); 
-    // std::cout << frame.size() << " " << frame.channels() << std::endl;
-    // cv::imshow("heyho", frame);
-    //  int key = cv::waitKey(0);
+
     int max_number = config["colonoscopy"]["max_number_frames"].as<int>();
 
     bool end = false;
@@ -66,18 +56,13 @@ int main() {
         frame = cv::imread(img_file_path + s_start_id + ".png", cv::IMREAD_COLOR);
         for (int num_img=1;num_img < max_number && !isTerminated; num_img++) {
 
-            std::cout << "frame Num: " << num_img << std::endl;            
-            // std::cout << frame.size() << std::endl;
+            // std::cout << "frame Num: " << num_img << std::endl;            
             isTerminated = sys->monocular_feed(frame);
             std::stringstream ss;
             ss << std::setw(5) << std::setfill('0') << num_img;
             std::string result = ss.str();
-            // std::cout << img_file_path + result + ".png" << std::endl;
             frame = cv::imread(img_file_path + result + ".png");
-            // cv::rotate(frame, frame, cv::ROTATE_180);
-            // std::cout << frame << std::endl;
-            // std::cout << img_file_path + result + ".png" << std::endl;
-            // std::cout << img_file_path + result + ".png" << std::endl;
+
             int key = cv::waitKey(1);
             if (key == 'q')
             {
@@ -86,7 +71,6 @@ int main() {
                 isTerminated = true;
             }
             
-            // cv::imshow("asd", frame);
             
         }
 
@@ -101,11 +85,7 @@ int main() {
     }
     double average = static_cast<double>(sum) / gt->all_mean_.size();
     std::cout << "average of RMSE: " << average << " start value: " << gt->all_mean_[0] << std::endl;
-    
-     gt->all_mean_.push_back(-1);
-    gt->all_mean_.push_back(average);
 
-    utils::saveToCSV(gt->all_mean_, "colon_1.csv");
 
     return 0;
 }

@@ -47,7 +47,7 @@ GT_Mesh:
   OrientNormalsConsistentTangentPlane: 10
   Poisson_depth: 9
   Poisson_width: 0.1
-  simplification: 4000
+  simplification: 1500
   threshold: 6
 
 colonoscopy:

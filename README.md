@@ -1,26 +1,12 @@
 <h1> Massive Parallel Real time Template based Deformable Surface Reconstruction on the GPU</h1>
 
-<!-- # Todo 
-* Todo heute
-* Commenting all files in App
-* Commenting all files in src
-* Provide used data
-* insert Acknowledgments and references
-* Code optimization -> output has to be a bit clearer
-* Provide used data
-* Troubleshooting with docker
-* Acknowledgments
-* Which work did I use
-* ParallaxBA
-* DefSLAM
-* phi-SfT
-* Robust-SfT
-* Which data did I use
-* commenting -->
+# 1. Overview !Todo
+* Create a gif or two
 
-# 1. Overview
 ![alternive textText](./data/image.png)
-# 2. Acknowledgements
+# 2. Acknowledgements !Todo
+* Double checking and expand it!
+
 The work has included analyses of the code from the following publications:
 [Zhao, Liang & Huang, Shoudong & Sun, Yanbiao & Yan, Lei & Dissanayake, Gamini.
 (2015). ParallaxBA: Bundle adjustment using parallax angle feature
@@ -54,7 +40,9 @@ journal={arXiv preprint arXiv:1908.08918},
 year={2019}
 }
 ```
-# 3. Dependencies
+# 3. Dependencies !Todo
+* 3.1- 3.6 Updaten
+* kann ich das ausführlicher machen?
 ## 3.1 Overview
 <ul>
 <li>C++17</li>
@@ -84,24 +72,28 @@ pointclouds, meshes and to compare the result with ground truth. Download and
 install instructions can be found at: https://www.open3d.org/
 
 ## 3.6 Suitsparse
-We use the Suitsparse library for the optimization process.
+We use the Suitsparse v7.7.0 for the optimization process.
 
-# 4. Installation and Building
+# 4. Installation and Building !Todo
+* Mach es einfach aber verständlich für alle
+
 Clone the repository:
 ```
-git clone https://github.com/DominikSlomma/Sparse-Template-based
-Reconstruction.git
+git clone https://github.com/DominikSlomma/Massive-Parallel-Real-time-Template-based-Deformable-Surface-Reconstruction-on-the-GPU
 ```
-We provide a script `build.sh`to build *Sparse Template based Reconstrution*.
+We provide a script `build.sh`to build *Massive Parallel Real-time Template-based Deformable Surface Reconstruction on the GPU*.
 Please make sure that all dependencies are installed (see section 3).
 ```
-cd Sparse-Template-based-Reconstruction
+cd Massive-Parallel-Real-time-Template-based-Deformable-Surface-Reconstruction-on-the-GPU
 chmod +x build.sh
 ./build.sh
 ```
 This will create a folder *build* where the executables will be created.
 
-# 5. Datasets
+# 5. Datasets !Todo
+* completly neu machen mit Datensätzen! Ich werde die ich habe reduzieren
+* ich muss auch erwähnen, wenn diese einen teil des datensatzes von phi oder hamlyn nehmen dann müssen diese den auch zitieren!
+
 In our work we used the [&phi;-SfT](https://drive.google.com/drive/folders
 1gpzp5k64S6TnDbl8ZW8lgSmDE_nzHdh9?usp=sharing) dataset, the [Phantom
 (http://hamlyn.doc.ic.ac.uk/vision/) dataset and an own created laparoscopic
@@ -109,15 +101,20 @@ dataset which we created with [colon_reconstruction_dataset](https:/
 github.com/zsustc/colon_reconstruction_dataset) 
 You can download the dataset which we used here: [Download]()
 
-# 6. Run
+# 6. Run !Todo
+* Das einfacher machen!
+
 The executable files are created in the *build* folder. To be able to execute these
 executable files successfully, first switch to the *build* folder and execute the
 corresponding program. To be able to run the program successfully, please adjust
 the corresponding configuration file in the *App* folder.
 
-# 7. License
+# 7. Docker !Todo
+* Auf docker eingehen und erklären!
+
+# 8. License
 This project is licensed under the [GNU General Public License (GPL)](https:/
 www.gnu.org/licenses/gpl-3.0.html).
-# 8. Reference
+# 9. Reference
 
-# 9. Troubleshooting
+# 10. Troubleshooting

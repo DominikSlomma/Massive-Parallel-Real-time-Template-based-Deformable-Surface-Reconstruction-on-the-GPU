@@ -61,26 +61,6 @@ file(GLOB HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
 install(FILES ${HEADERS}
         DESTINATION ${MESH_VIEWER_INCLUDE_INSTALL_DIR})
 
-# set(EXECUTABLE_TARGETS "")
-# add_executable(mein_programm view.cc)
-# list(APPEND EXECUTABLE_TARGETS mein_programm)
 
-# foreach(EXECUTABLE_TARGET IN LISTS EXECUTABLE_TARGETS)
-#         set_target_properties(${EXECUTABLE_TARGET} PROPERTIES
-#         RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}"
-#         RUNTIME_OUTPUT_DIRECTORY_DEBUG "${PROJECT_BINARY_DIR}"
-#         RUNTIME_OUTPUT_DIRECTORY_RELEASE "${PROJECT_BINARY_DIR}"
-#         RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL "${PROJECT_BINARY_DIR}"
-#         RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${PROJECT_BINARY_DIR}")
-
-#         target_compile_definitions(${EXECUTABLE_TARGET} PRIVATE pangolin_Viewer1)
-#         # Verknüpfen Sie Ihre Anwendung mit der Pangolin-Bibliothek
-#         target_link_libraries(${EXECUTABLE_TARGET} PUBLIC pangolin_Viewer1)
-# endforeach()
-# Fügen Sie Ihre Quelldateien hinzu
-# add_executable(mein_programm view.cc)
-# target_compile_definitions(mein_programm PRIVATE pangolin_Viewer1)
-# # Verknüpfen Sie Ihre Anwendung mit der Pangolin-Bibliothek
-# target_link_libraries(mein_programm PUBLIC pangolin_Viewer1)
 
 

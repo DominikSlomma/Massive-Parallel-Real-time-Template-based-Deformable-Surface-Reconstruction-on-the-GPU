@@ -37,7 +37,6 @@ private:
     std::vector<Eigen::Vector3d> gt_pc_;
     cv::Mat ref_img_;
     const YAML::Node config_;
-    // std::shared_ptr<open3d::geometry::TriangleMesh> mesh_ = nullptr;
 
     Tracking *tracking_ = nullptr;
     MeshMap *map_ = nullptr;

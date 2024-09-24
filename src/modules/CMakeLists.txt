@@ -1,6 +1,6 @@
 
 add_library(${PROJECT_NAME}
-            # ${CMAKE_CURRENT_SOURCE_DIR}/config.h
+
             ${CMAKE_CURRENT_SOURCE_DIR}/System.cc ${CMAKE_CURRENT_SOURCE_DIR}/System.h
             ${CMAKE_CURRENT_SOURCE_DIR}/Tracking.cc ${CMAKE_CURRENT_SOURCE_DIR}/Tracking.h
             ${CMAKE_CURRENT_SOURCE_DIR}/MeshMap.cc ${CMAKE_CURRENT_SOURCE_DIR}/MeshMap.h
@@ -18,8 +18,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 target_compile_options(${PROJECT_NAME} PRIVATE ${OpenMP_CXX_FLAGS} $<$<COMPILE_LANGUAGE:CUDA>:-arch=sm_35>)
 target_compile_definitions(${PROJECT_NAME} PUBLIC USE_OPENMP)
 
-# target_compile_definitions(${PROJECT_NAME} PRIVATE pangolin_Viewer)
-
 target_link_libraries(${PROJECT_NAME} PRIVATE
                                 pangolin_viewer 
                                 ${OpenCV_LIBS}
@@ -29,7 +27,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
                                 opencv_core
                                 opencv_features2d
                                 opencv_calib3d
-                                # pangolin
                                 ${SUITESPARSE_LIBRARIES}
                                 ${CHOLMOD_LIBRARIES} 
                                 ${BLAS_LIBRARIES}
@@ -41,8 +38,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
                                 ${CUDA_LIBRARIES} 
                                 cusolver 
                                 cudart cusparse
-                                # pangolin_Viewer
-                                # ${PLOTUTILS_LIBRARIES}
                                 )
 
 target_compile_options(${PROJECT_NAME} PRIVATE
@@ -52,7 +47,6 @@ $<$<COMPILE_LANGUAGE:CUDA>:-arch=sm_35>
 # Include directories
 target_include_directories(${PROJECT_NAME}
                         PRIVATE
-                        # ${Pangolin_INCLUDE_DIR}
                            "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/>"
                            "$<INSTALL_INTERFACE:include/>")
 
@@ -74,5 +68,5 @@ install(FILES ${HEADERS}
 add_subdirectory(optimize)
 add_subdirectory(data)
 add_subdirectory(GT_compare)
-# add_subdirectory(viewer)
+
 

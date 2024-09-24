@@ -35,12 +35,8 @@ namespace stbr {
         ss << std::setw(5) << std::setfill('0') << FrameNo_;
         std::string result = ss.str();
 
-        // auto pc = std::make_shared<open3d::geometry::PointCloud>(); 
-        // auto pc = open3d::io::CreatePointCloudFromFile(path_ + std::to_string(gt_id) + ".txt", "xyz");
-        // open3d::io::ReadPointCloud("/home/anonym/Schreibtisch/PhD/code/Sparse Template based Reconstruction/data/phi_SfT/real/S1/point_clouds/point_cloud_" + result + ".ply", *pc);
-        // open3d::io::ReadPointCloud(path_ + result + ".ply", *pc);
+      
         cv::Mat frame = cv::imread(path_ + result + ".exr", cv::IMREAD_ANYDEPTH);
-        // std::cout << frame.size() << std::endl; exit(1);
         // Iteriere über alle Bildpunkte
         std::vector<Eigen::Vector3d> pts;
         for (int y = 0; y < height; y++) {
@@ -51,17 +47,13 @@ namespace stbr {
                 if (depth == 0)
                     continue;
                 depth *= 5;
-                // std::cout << depth << std::endl;
                 Eigen::Vector3d tmp, uvt;
                 uvt << x,y,1;
-                // tmp = K_inv*uvt*(depth);
                 tmp <<  (x-cx)*depth/fx, 
                         (y-cy)*depth/fy, 
                         depth; 
                 pts.push_back(tmp);
-                // std::cout <<  fx << " " << (x-cx)*depth/fx << " " << (y-cy)*depth/fy << " " << depth << std::endl;
-                // Hier kannst du mit dem Pixelwert arbeiten (z.B. bearbeiten, anzeigen usw.)
-                // Zum Beispiel: std::cout << "Pixelwert an (" << x << ", " << y << "): " << (int)pixel_value << std::endl;
+
             }
         }
         open3d::geometry::PointCloud pc_;
@@ -83,7 +75,6 @@ namespace stbr {
         pc->points_ = tmp1;
         open3d::t::geometry::TriangleMesh t_mesh = open3d::t::geometry::TriangleMesh::FromLegacy(*mesh);
         open3d::t::geometry::PointCloud t_pc = open3d::t::geometry::PointCloud::FromLegacy(*pc);
-        // t_mesh.Clear();
 
         auto scene = open3d::t::geometry::RaycastingScene() ;
         scene.AddTriangles(t_mesh);

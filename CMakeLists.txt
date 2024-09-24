@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(Sparse_Template_Based_Reconstruction LANGUAGES CXX CUDA)
+project(Massive_Parallel_Real_time_Template_based_Deformable_Surface_Reconstruction_on_the_GPU LANGUAGES CXX CUDA)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -7,7 +7,6 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native -msse4 ") # think on 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})  
 set(CMAKE_CUDA_ARCHITECTURES 35)
 if(POLICY CMP0091)
-    # https://stackoverflow.com/a/56490614
     cmake_policy(SET CMP0091 NEW)
 endif()
 
@@ -24,35 +23,15 @@ else()
 endif()
 set(CMAKE_PREFIX_PATH "/usr/local" ${CMAKE_PREFIX_PATH})
 
-# Add the directories containing the header files to the include path
-#include_directories(${PROJECT_SOURCE_DIR}/src1)
-# include_directories(${PROJECT_SOURCE_DIR}/src/data)
-# include_directories(${PROJECT_SOURCE_DIR}/src/GT_compare)
-# include_directories(${PROJECT_SOURCE_DIR}/src/optimize)
 include_directories(${PROJECT_SOURCE_DIR}/src/viewer)
 include_directories(${PROJECT_SOURCE_DIR}/src/modules)
 include_directories(${PROJECT_SOURCE_DIR}/src/modules/data)
 include_directories(${PROJECT_SOURCE_DIR}/src/modules/GT_compare)
 include_directories(${PROJECT_SOURCE_DIR}/src/modules/optimize)
 include_directories(${PROJECT_SOURCE_DIR}/src/util)
+
 include_directories(${PROJECT_SOURCE_DIR}/test)
 
-# include_directories(${PROJECT_SOURCE_DIR}/app)
-# include_directories(${PROJECT_SOURCE_DIR}/viewer)
-
-# Manuelle Pfade zu SuiteSparse setzen
-# set(SUITE_SPARSE_INCLUDE_DIR /usr/local/include/suitesparse)
-# set(SUITE_SPARSE_LIB_DIR /usr/local/lib)
-
-
-# Füge die Include-Verzeichnisse hinzu
-# include_directories(${SUITE_SPARSE_INCLUDE_DIR})
-
-# # Füge die Bibliotheksverzeichnisse hinzu
-# link_directories(${SUITE_SPARSE_LIB_DIR})
-
-# # Falls du spezifische Bibliotheken benötigst
-# set(SUITE_SPARSE_LIBRARIES cholmod)
 
 find_package(SuiteSparse REQUIRED)
 
@@ -64,8 +43,6 @@ else()
     message(FATAL_ERROR "SuiteSparse not found!")
 endif()
 
-# # Falls du eine spezifische Option für CHOLMOD benötigst
-set(SUITESPARSE_CHOLMOD_USE_GPU ON)
 include_directories(${SUITESPARSE_INCLUDE_DIRS})
 link_directories(${SUITESPARSE_LIBRARY_DIRS})
 
@@ -79,7 +56,7 @@ IF(CHOLMOD_FOUND AND BLAS_FOUND AND LAPACK_FOUND)
 ELSE()
   SET(CHOLMOD_FOUND FALSE)
 ENDIF()
-# include_directories(${CHOLMOD_INCLUDE_DIR})
+
 
 find_package(OpenCV 4.5.0 REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
@@ -112,21 +89,6 @@ find_package(yaml-cpp REQUIRED)
 # OpenMP
 find_package(OpenMP REQUIRED)
 
-# find_package(Pangolin 0.8 REQUIRED)
-# if(NOT Pangolin_FOUND)
-#     message(FATAL_ERROR "Pangolin not found!")
-# endif()
-
-# Fügen Sie den Include-Verzeichnis von Pangolin hinzu
-# include_directories(${Pangolin_INCLUDE_DIRS})
-
-# Install to the specified directory
-# install(FILES ${STBR_VERSION_CONFIG} ${STBR_PROJECT_CONFIG}
-#         DESTINATION ${STBR_CONFIG_INSTALL_DIR})
-
-# install(EXPORT ${STBR_TARGETS_EXPORT_NAME}
-#         NAMESPACE ${STBR_NAMESPACE}
-#         DESTINATION ${STBR_CONFIG_INSTALL_DIR})
 
 # Set standard installation directories
 set(RUNTIME_DESTINATION bin)
@@ -134,23 +96,16 @@ set(LIBRARY_DESTINATION lib)
 set(ARCHIVE_DESTINATION lib)
 set(INCLUDES_DESTINATION include)
 
-# add_subdirectory(src)
 
 enable_language(CUDA)
 find_package(CUDA QUIET REQUIRED)
 include_directories("${CUDA_INCLUDE_DIRS}")
 
-# Set the CUDA standard (optional, CUDA 11.0 introduced CUDA 11.0 standards)
+
 
 
 add_subdirectory(src)
 add_subdirectory(app)
-add_subdirectory(test)
 
-
-# add_subdirectory(${PROJECT_SOURCE_DIR}/src/viewer)
-# add_subdirectory(${PROJECT_SOURCE_DIR}/src/optimize)
-# add_subdirectory(${PROJECT_SOURCE_DIR}/src/data)
-# add_subdirectory(${PROJECT_SOURCE_DIR}/src/GT_compare)
-# add_subdirectory(${PROJECT_SOURCE_DIR}/app)
+# add_subdirectory(test)
 

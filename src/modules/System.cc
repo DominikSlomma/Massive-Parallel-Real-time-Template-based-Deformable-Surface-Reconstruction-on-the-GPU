@@ -14,13 +14,7 @@
 
 namespace stbr {
 System::System() {
-    
-    // Mesh_Viewer::MeshViewer1 *a;
-    // viewer_ = new Viewer::MeshViewer();
-    // // sample();
-    // viewer_->run();
-    // viewer_ = new Viewer::MeshViewer();
-    // viewer_->run();
+
 }
 
 System::System(std::vector<Eigen::Vector3i> ref_triangles, std::vector<Eigen::Vector3d> ref_vertices, cv::Mat ref_img, const YAML::Node &config, GroundTruth_compare *gt)
@@ -36,16 +30,9 @@ System::System(std::vector<Eigen::Vector3i> ref_triangles, std::vector<Eigen::Ve
 
     tracking_->set_MeshMap(map_);
     map_->setTracking(tracking_, db_);
-    
-    // viewer_ = new Mesh_Visualizer(config["Visualization"]["width"].as<int>(), config["Visualization"]["height"].as<int>(), ref_vertices_, ref_triangles_, K, mesh_, config["Visualization"]["show_only_optimised_part"].as<bool>(), config_);
-    
+
     viewer_ = new Viewer::MeshViewer(db_, ref_img_, ref_vertices_, ref_triangles_, config_);
-    
-    // viewer_ = new Viewer::MeshViewer();
-    // viewer_ = new MeshViewer::MeshViewer();
-    // viewer_->initImageParams(ref_img, tracking_->usable_triangles_, tracking_->usable_vertices_);
-    // std::cout << "ini\n";
-    // viewer_->run();
+
 
     viewing_thread_ = std::unique_ptr<std::thread>(new std::thread(&Viewer::MeshViewer::run, viewer_));
 }

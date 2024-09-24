@@ -61,24 +61,7 @@ namespace utils {
 
             int number = 1;
 
-        // for(int i=0; i<mesh->triangles_.size();i++) {
-        //     Eigen::Vector3i tmp;
-        //     tmp = mesh->triangles_[i];
-        //     // if (tmp.x() == number || tmp.y() == number || tmp.z() == number) {
-        //     //     std::cout << "found\n";
-        //     //     exit(1);
-        //     // }
-        //     // std::cout << tmp.x() << " " << tmp.y() << " " << tmp.z() << std::endl;
-        //     break;
-        // }
-        // std::cout << "end\n";
-        // exit(1);
-            
-        // open3d::visualization::Visualizer vis;
-        // vis.CreateVisualizerWindow("adsad");
-        // vis.AddGeometry(mesh);
-        // vis.Run();
-        // vis.DestroyVisualizerWindow();
+
     }
 
     void getMesh(std::string path, std::vector<Eigen::Vector3d> &vertices, std::vector<Eigen::Vector3i> &triangles) {
@@ -94,11 +77,7 @@ namespace utils {
         for(int i=0; i<mesh->triangles_.size();i++)
             triangles.push_back(mesh->triangles_[i]);
             
-        // open3d::visualization::Visualizer vis;
-        // vis.CreateVisualizerWindow("adsad");
-        // vis.AddGeometry(mesh);
-        // vis.Run();
-        // vis.DestroyVisualizerWindow();
+
     }
 
     // this got used to create a reference mesh for
@@ -128,17 +107,13 @@ namespace utils {
                 if (depth == 0)
                     continue;
                 depth *= 5;
-                // std::cout << depth << std::endl;
                 Eigen::Vector3d tmp, uvt;
                 uvt << x,y,1;
-                // tmp = K_inv*uvt*(depth);
                 tmp <<  (x-cx)*depth/fx, 
                         (y-cy)*depth/fy, 
                         depth; 
                 pts.push_back(tmp);
-                // std::cout <<  fx << " " << (x-cx)*depth/fx << " " << (y-cy)*depth/fy << " " << depth << std::endl;
-                // Hier kannst du mit dem Pixelwert arbeiten (z.B. bearbeiten, anzeigen usw.)
-                // Zum Beispiel: std::cout << "Pixelwert an (" << x << ", " << y << "): " << (int)pixel_value << std::endl;
+
             }
         }
         
@@ -146,7 +121,6 @@ namespace utils {
         pcd.points_.resize(pts.size());
         pcd.points_ = pts;
         
-        // std::cout << pcd.points_.size() << std::endl; exit(1);
         std::shared_ptr<open3d::geometry::PointCloud> pc;
         pc = std::make_shared<open3d::geometry::PointCloud>(pcd);
 
@@ -175,21 +149,13 @@ namespace utils {
         mesh->RemoveDegenerateTriangles();
         open3d::io::WriteTriangleMesh("mesh.obj",*mesh);
         open3d::io::WritePointCloud("pc.ply",*pc);
-        // mesh->ComputeTriangleNormals();
 
-        // mesh = mesh->SimplifyQuadricDecimation(config["GT_Mesh"]["simplification"].as<int>(), std::numeric_limits<double>::infinity(), 1.0);
-        
-        
-        // open3d::visualization::DrawGeometries(*pcds);
         open3d::visualization::Visualizer vis;
         vis.CreateVisualizerWindow("adsad");
         vis.AddGeometry(mesh);
         vis.Run();
         vis.DestroyVisualizerWindow();
-        // exit(1);
-        // open3d::visualization::DrawGeometries({pcd});
-        // cv::imshow("asd", cv::imread(file));
-        // cv::waitKey(0);
+
     }
 
 
@@ -239,22 +205,16 @@ namespace utils {
         if (u < 0 || u > config["Image"]["width"].as<int>() || v < 0 || v > config["Image"]["height"].as<int>()) {
             bad_vertices.push_back(i);
         }
-        // else {
-        //     good_vertices.push_back(1);
-        // }
+
     }
 
     mesh->RemoveVerticesByIndex(bad_vertices);
     
-    // static int mesh_resolution = 100;
-    // int simplification = mesh_resolution;
+
 
     int simplification = config["GT_Mesh"]["simplification"].as<int>();
 
     mesh = mesh->SimplifyQuadricDecimation(simplification, std::numeric_limits<double>::infinity(), 1.0);
-    
-    // mesh_resolution = mesh_resolution + 1000;
-
     mesh->RemoveUnreferencedVertices();
     mesh->RemoveDegenerateTriangles();
 
@@ -264,9 +224,7 @@ namespace utils {
     for(int i=0; i<mesh->triangles_.size();i++)
         triangles.push_back(mesh->triangles_[i]);
     
-    
-    // open3d::io::WriteTriangleMesh("output_mesh.ply", *mesh);
-    // exit(1);
+
     }
     
 }

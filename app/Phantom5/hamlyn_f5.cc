@@ -1,6 +1,3 @@
-// #include "MeshMap.h"
-// #include "Tracking.h"
-// #include "viewer/Mesh_Visualizer.h"
 #include "System.h"
 #include "GT_compare/HamlynGT.h"
 #include "utils.h"
@@ -31,7 +28,6 @@ int main() {
     HamlynGT* gt = new HamlynGT(config);
     // Creation of a mesh
     std::string video_file = config["System"]["video_file_path"].as<std::string>();
-    // std::string obj_file_path = config["System"]["reference_file_path"].as<std::string>();
 
 
     cv::Mat frame;
@@ -50,10 +46,8 @@ int main() {
     bool isTerminated = false;
     int ii=0;
     while(!isTerminated) {
-        // std::cout << frame << std::endl;
         if(frame.empty())
             break;
-        // std::cout << "asdasdasdsa\n";
         isTerminated = sys->monocular_feed(frame);
         std::cout << "Frame Num: " << ii << std::endl; ii++;
         int key = cv::waitKey(1);
@@ -72,13 +66,7 @@ int main() {
         sum += element;
     }
     double average = static_cast<double>(sum) / gt->all_mean_.size();
-    // std::cout << "RMS: " << average << std::endl;
     std::cout << "average of RMSE: " << average << " start value: " << gt->all_mean_[0] << std::endl;
-
-    gt->all_mean_.push_back(-1);
-    gt->all_mean_.push_back(average);
-
-    utils::saveToCSV(gt->all_mean_, "hamlyn_f5.csv");
 
     cap.release();
     return 0;

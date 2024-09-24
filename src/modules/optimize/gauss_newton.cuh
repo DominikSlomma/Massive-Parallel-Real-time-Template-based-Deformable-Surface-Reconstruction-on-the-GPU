@@ -4,7 +4,6 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 #include <cusolverSp.h>
-// #include <math_functions.h>
 #include <cuda_runtime_api.h>
 
 
