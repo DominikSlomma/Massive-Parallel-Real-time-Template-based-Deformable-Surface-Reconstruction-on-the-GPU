@@ -1,19 +1,14 @@
-<h1> Massive Parallel Real time Template based Deformable Surface Reconstruction on the GPU</h1>
+<h1> Massive Parallel Real-time Template based Deformable Surface Reconstruction on the GPU</h1>
 
-# 1. Overview !Todo
-* Create a gif or two
+# 1. Overview 
 
 ![alternive textText](./data/image.png)
-# 2. Acknowledgements !Todo
-* Double checking and expand it!
+# 2. Acknowledgements
+
 
 The work has included analyses of the code from the following publications:
-[Zhao, Liang & Huang, Shoudong & Sun, Yanbiao & Yan, Lei & Dissanayake, Gamini.
-(2015). ParallaxBA: Bundle adjustment using parallax angle feature
-parametrization. The International Journal of Robotics Research. 34. 493-516.
-10.1177/0278364914551583.](https://www.researchgate.net/publication
-275260778_ParallaxBA_Bundle_adjustment_using_parallax_angle_feature_para
-etrization)
+
+[Zhao, Liang & Huang, Shoudong & Sun, Yanbiao & Yan, Lei & Dissanayake, Gamini. (2015). ParallaxBA: Bundle adjustment using parallax angle feature parametrization. The International Journal of Robotics Research. 34. 493-516. 10.1177/0278364914551583.](https://www.researchgate.net/publication275260778_ParallaxBA_Bundle_adjustment_using_parallax_angle_feature_paraetrization)
 ```
 @article{article,
 author = {Zhao, Liang and Huang, Shoudong and Sun, Yanbiao and Yan, Lei and
@@ -27,9 +22,7 @@ journal = {The International Journal of Robotics Research},
 doi = {10.1177/0278364914551583}
 }
 ```
-[Lamarca, Jose, et al. "DefSLAM: Tracking and Mapping of Deforming Scenes from
-Monocular Sequences." arXiv preprint arXiv:1908.08918 (2019).](https://arxiv.org
-abs/1908.08918)
+[Lamarca, Jose, et al. "DefSLAM: Tracking and Mapping of Deforming Scenes from Monocular Sequences." arXiv preprint arXiv:1908.08918 (2019).](https://arxiv.orgabs/1908.08918)
 ```
 @article{lamarca2019defslam,
 title={DefSLAM: Tracking and Mapping of Deforming Scenes from Monocular
@@ -40,12 +33,11 @@ journal={arXiv preprint arXiv:1908.08918},
 year={2019}
 }
 ```
-# 3. Dependencies !Todo
-* 3.1- 3.6 Updaten
-* kann ich das ausführlicher machen?
+# 3. Dependencies
 ## 3.1 Overview
 <ul>
 <li>C++17</li>
+<li>Cuda-11.8</li>
 <li>OpenCV-4.5.0</li>
 <li>Eigen-3.3</li>
 <li>Open3D-0.18.0</li>
@@ -74,8 +66,7 @@ install instructions can be found at: https://www.open3d.org/
 ## 3.6 Suitsparse
 We use the Suitsparse v7.7.0 for the optimization process.
 
-# 4. Installation and Building !Todo
-* Mach es einfach aber verständlich für alle
+# 4. Installation and Building
 
 Clone the repository:
 ```
@@ -90,31 +81,35 @@ chmod +x build.sh
 ```
 This will create a folder *build* where the executables will be created.
 
-# 5. Datasets !Todo
-* completly neu machen mit Datensätzen! Ich werde die ich habe reduzieren
-* ich muss auch erwähnen, wenn diese einen teil des datensatzes von phi oder hamlyn nehmen dann müssen diese den auch zitieren!
+# 5. Datasets 
 
-In our work we used the [&phi;-SfT](https://drive.google.com/drive/folders
-1gpzp5k64S6TnDbl8ZW8lgSmDE_nzHdh9?usp=sharing) dataset, the [Phantom
-(http://hamlyn.doc.ic.ac.uk/vision/) dataset and an own created laparoscopic
-dataset which we created with [colon_reconstruction_dataset](https:/
-github.com/zsustc/colon_reconstruction_dataset) 
-You can download the dataset which we used here: [Download]()
+You can download our dataset over the following link: [our dataset](https://studentutsedu-my.sharepoint.com/:f:/g/personal/dominik_slomma_student_uts_edu_au/EhRgrDQHanxPuQ0Z_k3ik5gBY6FViCGKqNdPxEUWx0DCHw?e=3rvjQh)
 
-# 6. Run !Todo
-* Das einfacher machen!
+If you want the original blanket dataset please refere to the [$\phi$-SfT](https://4dqv.mpi-inf.mpg.de/phi-SfT/) project website.
 
-The executable files are created in the *build* folder. To be able to execute these
-executable files successfully, first switch to the *build* folder and execute the
-corresponding program. To be able to run the program successfully, please adjust
-the corresponding configuration file in the *App* folder.
+If you are interest on your own colonoscopy dataset use the folloging github: [Colonoscopy simulator](https:/github.com/zsustc/colon_reconstruction_dataset) 
 
-# 7. Docker !Todo
-* Auf docker eingehen und erklären!
+If you want to have the original Phantom dataset please refer to the [Hamlyn-Website](https://hamlyn.doc.ic.ac.uk/vision/)
+
+
+# 6. Run
+The executable files are created in the *build* folder. To be able to execute these executable files successfully, first switch to the *build* folder and execute the corresponding program. To be able to run the program successfully, please adjust the corresponding configuration file in the *App* folder. 
+
+If you want to use the current configuration, please create a *data* folder and include *our* dataset. Also change into the *build* folder.
+
+# 7. Docker 
+
+<h3> Currently working on a Docker file!</h3>
 
 # 8. License
 This project is licensed under the [GNU General Public License (GPL)](https:/
 www.gnu.org/licenses/gpl-3.0.html).
 # 9. Reference
 
+<h3> Currently working on this part </h3>
+
+
 # 10. Troubleshooting
+
+
+<h3> This part will later include the visualisation problems when using docker. </h3>

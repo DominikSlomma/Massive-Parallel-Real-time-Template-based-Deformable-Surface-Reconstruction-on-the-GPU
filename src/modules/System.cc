@@ -39,14 +39,14 @@ System::System(std::vector<Eigen::Vector3i> ref_triangles, std::vector<Eigen::Ve
 
 
 bool System::monocular_feed(cv::Mat &img) {
-    static int ii = 0;
+    // static int ii = 0;
     db_->setTexture(img);
 
     tracking_->track(img);
     map_->unordered_map();
     gt_->compareWithGroundTruth(map_->getVertices(), map_->getTriangles(), gt_pc_);
-    db_->setVerticesAndTriangles(map_->getVertices(), map_->getTriangles());
-    // db_->setVertices(map_->getVertices());
+    // db_->setVerticesAndTriangles(map_->getVertices(), map_->getTriangles());
+    db_->setVertices(map_->getVertices());
     db_->setGT(gt_pc_);
 
     // static int iii=0;
@@ -60,9 +60,9 @@ bool System::monocular_feed(cv::Mat &img) {
     // optimiserGPU a;
     // isTerminated();
 
-    if(ii == 0){
-        cv::waitKey(0);
-        ii++;}
+    // if(ii == 0){
+    //     cv::waitKey(0);
+    //     ii++;}
 
     while(db_->isPause()) {
         std::this_thread::sleep_for(std::chrono::microseconds(100));

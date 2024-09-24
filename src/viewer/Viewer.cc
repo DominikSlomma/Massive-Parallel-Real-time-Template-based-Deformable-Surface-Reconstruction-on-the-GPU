@@ -66,9 +66,9 @@ void MeshViewer::draw_current_mesh() {
     // for now I assume that I need a pair of different triangles and different veritces
 
     db_->getTexture(img_);
-    // db_->getVertices(vertices_);
+    db_->getVertices(vertices_);
     // db_->getTriangles(triangles_);
-    db_->getVerticesAndTriangles(vertices_, triangles_);
+    // db_->getVerticesAndTriangles(vertices_, triangles_);
     // Get Image and get Vertices
     mDrawer->addVertices(vertices_);
     mDrawer->addTriangles(triangles_);

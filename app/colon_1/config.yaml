@@ -52,7 +52,7 @@ GT_Mesh:
 
 colonoscopy:
   max_number_frames: 59
-  only_once: true
+  only_once: false
   start_id: 0
   gt_path: "../data/Colonoscopy/Dataset1/YOS_depth"
 

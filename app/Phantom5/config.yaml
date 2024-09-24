@@ -1,7 +1,7 @@
 
 System:
-  video_file_path: "../data/HamlynDatasetShort/f5phantom/f5_dynamic_deint_L.avi"
-  reference_file_path: "../data/HamlynDatasetShort/f5phantom/f5/heartDepthMap_"
+  video_file_path: "../data/Hamlyn/f5phantom/f5_dynamic_deint_L.avi"
+  reference_file_path: "../data/Hamlyn/f5phantom/f5/heartDepthMap_"
 
   optimization_algorithm: 0
   # 0: normal
@@ -56,7 +56,7 @@ Hamlyn:
   multiplier: 30
   addition: 0.466667
   modulo: 20
-  gt_path: "../data/HamlynDatasetShort/f5phantom/f5/heartDepthMap_"
+  gt_path: "../data/Hamlyn/f5phantom/f5/heartDepthMap_"
 
 
 Kanade:

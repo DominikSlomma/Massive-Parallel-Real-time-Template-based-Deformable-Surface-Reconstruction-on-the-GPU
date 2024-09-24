@@ -1,4 +1,4 @@
-echo "Configuring and building Spare Template based Reconstruction ..."
+echo "Configuring and building of this repo ..."
 
 mkdir -p build
 cd build

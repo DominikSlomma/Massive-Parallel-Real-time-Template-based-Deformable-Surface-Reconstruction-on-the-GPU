@@ -1,7 +1,7 @@
 
 System:
-  video_file_path: "../data/phi_SfT/real/S1/rgbs/rgb_"
-  reference_file_path: "../data/phi_SfT/real/S1/templates/template_mesh_final_textured.obj"
+  video_file_path: "../data/Blanket/S1/rgbs/rgb_"
+  reference_file_path: "../data/Blanket/S1/templates/template_mesh_final_textured.obj"
 
   optimization_algorithm: 1
 
@@ -47,7 +47,7 @@ Visualization:
 
 
 Phi_SfT:
-  gt_path: "../data/phi_SfT/real/S1/point_clouds/point_cloud_"
+  gt_path: "../data/Blanket/S1/point_clouds/point_cloud_"
   # simplification: 586
   max_number_frames: 50
   only_once: true
