@@ -85,9 +85,9 @@ This will create a folder *build* where the executables will be created.
 
 You can download our dataset over the following link: [our dataset](https://studentutsedu-my.sharepoint.com/:f:/g/personal/dominik_slomma_student_uts_edu_au/EhRgrDQHanxPuQ0Z_k3ik5gBY6FViCGKqNdPxEUWx0DCHw?e=3rvjQh)
 
-If you want the original blanket dataset please refere to the [$\phi$-SfT](https://4dqv.mpi-inf.mpg.de/phi-SfT/) project website.
+If you want the original blanket dataset please refere to the  [$\phi$-SfT](https://4dqv.mpi-inf.mpg.de/phi-SfT/) project website.
 
-If you are interest on your own colonoscopy dataset use the folloging github: [Colonoscopy simulator](https:/github.com/zsustc/colon_reconstruction_dataset) 
+If you are interest on your own colonoscopy dataset use the folloging github: [Colonoscopy simulator](https://github.com/zsustc/colon_reconstruction_dataset) 
 
 If you want to have the original Phantom dataset please refer to the [Hamlyn-Website](https://hamlyn.doc.ic.ac.uk/vision/)
 
@@ -95,7 +95,36 @@ If you want to have the original Phantom dataset please refer to the [Hamlyn-Web
 # 6. Run
 The executable files are created in the *build* folder. To be able to execute these executable files successfully, first switch to the *build* folder and execute the corresponding program. To be able to run the program successfully, please adjust the corresponding configuration file in the *App* folder. 
 
-If you want to use the current configuration, please create a *data* folder and include *our* dataset. Also change into the *build* folder.
+If you want to use the current configuration, please create a *data* folder and include *our* dataset. Also change into the *build* folder:
+
+```
+cd ./build/
+```
+After that you can run one out of 14 tests. The appications are shown below:
+
+Blanket-Dataset:
+```
+./S1_real
+./S2_real
+./S3_real
+./S4_real
+./S5_real
+./S6_real
+./S7_real
+./S8_real
+./S9_real
+```
+Colonoscopy-Dataset:
+```
+./colonscopy_1
+./colonscopy_2
+./colonscopy_3
+```
+Hamlyn-Dataset:
+```
+./hamlyn_f5
+./hamlyn_f7
+```
 
 # 7. Docker 
 
