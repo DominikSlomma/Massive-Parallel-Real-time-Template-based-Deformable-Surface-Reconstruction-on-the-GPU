@@ -2,7 +2,7 @@
 
 # 1. Overview 
 
-![alternive textText](./data/image.png)
+![alternive textText](./doc/ColonCmp.gif)
 # 2. Acknowledgements
 
 
